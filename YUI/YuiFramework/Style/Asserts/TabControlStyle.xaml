@@ -1,0 +1,245 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:YuiFramework.CustomerControl">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Color.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type TabControl}">
+        <Setter Property="Background" Value="{DynamicResource YuiControl.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource YuiControl.BorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource YuiControl.Foreground}" />
+        <!--<Setter Property="Margin" Value="5" />-->
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{DynamicResource YuiControl.CornerRadius}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Name="ROW0" />
+                                <RowDefinition Name="ROW1" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Name="COL0" />
+                                <ColumnDefinition Name="COL1" />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                                Name="Mask"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{DynamicResource YuiControl.CornerRadius}"
+                                Opacity="0.5" />
+                            <Border Name="TP">
+                                <TabPanel IsItemsHost="True">
+                                    <!--<TabPanel.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=Mask}" />
+                                    </TabPanel.OpacityMask>-->
+                                </TabPanel>
+                            </Border>
+                            <Grid
+                                Name="TC"
+                                Grid.Row="0"
+                                Background="Transparent">
+                                <ContentPresenter
+                                    x:Name="PART_SelectedContentHost"
+                                    Margin="0"
+                                    ContentSource="SelectedContent"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Grid>
+                        </Grid>
+                        <!--</Border>-->
+                    </Border>
+                    <!--  样式切换  -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="TabStripPlacement" Value="Top">
+                            <!--<Setter Property="BorderThickness" Value="0,3,0,0" TargetName="EB" />-->
+                            <!--<Setter TargetName="EB" Property="Margin" Value="0,0,0,0" />-->
+                            <Setter TargetName="Mask" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Mask" Property="Grid.ColumnSpan" Value="2" />
+                            <Setter TargetName="Mask" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="ROW0" Property="Height" Value="auto" />
+                            <Setter TargetName="TC" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="TC" Property="Grid.ColumnSpan" Value="2" />
+                            <Setter TargetName="TC" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="TP" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="TP" Property="Grid.ColumnSpan" Value="2" />
+                            <!--<Setter TargetName="Mask" Property="CornerRadius" Value="5,5,0,0" />-->
+                            <Setter TargetName="TP" Property="Grid.Row" Value="0" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <!--<Setter Property="BorderThickness" Value="0,0,0,3" TargetName="EB" />-->
+                            <Setter TargetName="Mask" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Mask" Property="Grid.ColumnSpan" Value="2" />
+                            <Setter TargetName="Mask" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="ROW1" Property="Height" Value="auto" />
+                            <Setter TargetName="TC" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="TC" Property="Grid.ColumnSpan" Value="2" />
+                            <Setter TargetName="TC" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="TP" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="TP" Property="Grid.ColumnSpan" Value="2" />
+                            <!--<Setter TargetName="Mask" Property="CornerRadius" Value="0,0,5,5" />-->
+                            <Setter TargetName="TP" Property="Grid.Row" Value="1" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter TargetName="COL0" Property="Width" Value="auto" />
+                            <!--<Setter Property="BorderThickness" Value="3,0,0,0" TargetName="EB" />-->
+                            <!--<Setter TargetName="EB" Property="Margin" Value="0,0,5,0" />-->
+                            <Setter TargetName="Mask" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Mask" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Mask" Property="Grid.RowSpan" Value="2" />
+                            <Setter TargetName="TC" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="TC" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="TC" Property="Grid.RowSpan" Value="2" />
+                            <Setter TargetName="TP" Property="Grid.Column" Value="0" />
+                            <!--<Setter TargetName="Mask" Property="CornerRadius" Value="5,0,0,5" />-->
+                            <Setter TargetName="TP" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="TP" Property="Grid.RowSpan" Value="2" />
+                        </Trigger>
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter TargetName="COL1" Property="Width" Value="auto" />
+                            <!--<Setter Property="BorderThickness" Value="0,0,3,0" TargetName="EB" />-->
+                            <Setter TargetName="Mask" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="Mask" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Mask" Property="Grid.RowSpan" Value="2" />
+                            <Setter TargetName="TC" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="TC" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="TC" Property="Grid.RowSpan" Value="2" />
+                            <Setter TargetName="TP" Property="Grid.Column" Value="1" />
+                            <!--<Setter TargetName="Mask" Property="CornerRadius" Value="0,5,5,0" />-->
+                            <Setter TargetName="TP" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="TP" Property="Grid.RowSpan" Value="2" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type local:YuiTabItem}">
+        <Setter Property="Background" Value="{DynamicResource YuiControl.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource YuiControl.BorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource YuiControl.Foreground}" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:YuiTabItem}">
+                    <Grid Name="grid" Margin="{TemplateBinding Margin}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Name="COL0" Width="auto" />
+                            <ColumnDefinition Name="COL1" Width="*" />
+                            <ColumnDefinition Name="COL2" Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--<Path x:Name="aaa" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"  Data="M45.125,22.5 L51,28.2 C51.1,28.35 52.6,29.5 51.1,31 49.5,32.56 45.1,36.7 45.1,36.9 L54.7,36.9 54.7,22.1 44.8,22.1 z"
+                                       Fill="#d2d2d2" Stretch="Fill" Height="{TemplateBinding Height}" MinWidth="15" MaxWidth="16" MinHeight="30" />-->
+                        <Polyline
+                            x:Name="aaa"
+                            Grid.Column="0"
+                            Height="{TemplateBinding Height}"
+                            Margin="0" Opacity="0.85"
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Center"
+                            Fill="{TemplateBinding Background}"
+                            Stretch="Fill" />
+
+                        <Border
+                            x:Name="bbb"
+                            Grid.Column="1"
+                            Margin="0"
+                            Padding="8,0" Opacity="0.85"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="0">
+                            <ContentPresenter
+                                x:Name="contentPresenter"
+                                HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                ContentSource="Header"
+                                Focusable="False"
+                                Opacity="0.75"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                TextBlock.FontSize="{DynamicResource YuiTabControlHeaderFontSize}"
+                                TextBlock.Foreground="{TemplateBinding Foreground}" />
+
+                        </Border>
+
+                        <Line
+                            Name="decorateLine"
+                            Grid.Column="1"
+                            Margin="6,3"
+                            Stroke="{DynamicResource DecorateLineColor}"
+                            StrokeThickness="5"
+                            Visibility="Collapsed"
+                            X1="0"
+                            X2="0"
+                            Y1="0"
+                            Y2="{TemplateBinding Height}" />
+                        <!--<Path x:Name="ccc" Height="{TemplateBinding Height}" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Data="M20,20.5 L20,20 C25,20 25,20 26,21 L32,27 C32,27 33.1,29 32,30.2 32,30 25.9,37.5 25,37.5 24.5,37.5 20.5,37.5 20.0,37.5 z"
+                                    MaxWidth="21" />-->
+                        <Polyline
+                            x:Name="ccc" Opacity="0.85"
+                            Grid.Column="2"
+                            Height="{TemplateBinding Height}"
+                            Margin="0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Fill="{TemplateBinding Background}"
+                            Stretch="Fill" />
+
+
+                    </Grid>
+
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsComplete" Value="True">
+                            <Setter TargetName="aaa" Property="Opacity" Value="1" />
+                            <Setter TargetName="bbb" Property="Opacity" Value="1" />
+                            <Setter TargetName="ccc" Property="Opacity" Value="1" />
+                            <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource YuiControl.SelectedNotActive}" />
+                            <Setter TargetName="contentPresenter" Property="Opacity" Value="0.95" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="aaa" Property="Opacity" Value="1" />
+                            <Setter TargetName="bbb" Property="Opacity" Value="1" />
+                            <Setter TargetName="ccc" Property="Opacity" Value="1" />
+                            <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource YuiControl.Selected}" />
+                            <Setter TargetName="contentPresenter" Property="Opacity" Value="1" />
+                        </Trigger>
+
+                        <Trigger Property="IsFistTag" Value="True">
+                            <Setter TargetName="aaa" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="Black" />
+                            <Setter TargetName="contentPresenter" Property="Margin" Value="5,0,0,0" />
+                        </Trigger>
+                        <Trigger Property="IsShowDecorateLine" Value="True">
+                            <Setter TargetName="decorateLine" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsShowDecorateLine" Value="False">
+                            <Setter TargetName="decorateLine" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter TargetName="aaa" Property="Fill" Value="{DynamicResource YuiControl.MouseOverBackground}" />
+                            <Setter TargetName="bbb" Property="Background" Value="{DynamicResource YuiControl.MouseOverBackground}" />
+                            <Setter TargetName="ccc" Property="Fill" Value="{DynamicResource YuiControl.MouseOverBackground}" />
+
+                            <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{DynamicResource YuiControl.MouseOverForeground}" />
+
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

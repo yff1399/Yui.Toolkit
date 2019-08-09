@@ -1,0 +1,208 @@
+﻿<Window x:Class="YuiMvvm.MainWindow"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:converter="clr-namespace:YuiHelpers.Converters;assembly=YuiHelpers"
+               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+               xmlns:local="clr-namespace:YuiFramework.CustomerControl;assembly=YuiFramework"
+               xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=YuiFramework"
+               Title="YUI"
+               DataContext="{Binding Main, Source={StaticResource Locator}}"
+               ResizeMode="CanResizeWithGrip"
+               WindowStyle="None">
+    <shell:WindowChrome.WindowChrome>
+        <shell:WindowChrome CaptionHeight="0"
+                       CornerRadius="0"
+                       
+                       GlassFrameThickness="0"
+                       UseAeroCaptionButtons="False" />
+    </shell:WindowChrome.WindowChrome>
+    <Window.Resources>
+        <converter:ConverterReversalVisibility x:Key="converterReversalVisibility" />
+    </Window.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="34" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <!--  窗体头部  -->
+            <Grid Grid.ColumnSpan="2"
+                           Background="{DynamicResource YuiWindow.Background}"
+                           MouseDown="Grid_MouseDown"
+                           MouseLeftButtonDown="Grid_MouseLeftButtonDown">
+                <TextBlock Width="100"
+                               Margin="10,10,0,0"
+                               HorizontalAlignment="Left"
+                               FontSize="18"
+                               Foreground="White"
+                               Text="{Binding Title, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                <StackPanel Margin="0"
+                               HorizontalAlignment="Right"
+                               Orientation="Horizontal">
+                    <local:YuiIcon Name="Btn_ChangeSkin"
+                                   Width="34"
+                                   Height="34"
+                                   Background="{DynamicResource YuiWindow.Background}"
+                                   BorderBrush="Transparent"
+                                   BorderThickness="0"
+                                   Click="Btn_Change_Click"
+                                   MouseOverBackground="{StaticResource YuiWindow.MouseOverBackground}"
+                                   PathColor="White"
+                                   PathData="{StaticResource ChangeSkinButtonGeometry}"
+                                   PathWidth="16" />
+                    <Popup x:Name="popUp"
+                                   AllowsTransparency="True"
+                                   HorizontalOffset="-8"
+                                   Placement="Bottom"
+                                   PlacementTarget="{Binding ElementName=Btn_ChangeSkin}"
+                                   StaysOpen="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Margin="0"
+                                           Background="Transparent"
+                                           BorderThickness="0">
+                                <Path Width="10"
+                                               VerticalAlignment="Center"
+                                               Data="{StaticResource TopCenterTriangle}"
+                                               Fill="{StaticResource YuiTooltip.Background}"
+                                               Stretch="Uniform" />
+                            </Border>
+                            <Border Grid.Row="1"
+                                           Width="50"
+                                           MinHeight="100"
+                                           Background="Transparent"
+                                           BorderThickness="0"
+                                           CornerRadius="3">
+                                <StackPanel>
+                                    <Rectangle Width="50"
+                                                   Height="50"
+                                                   Fill="Red"
+                                                   RadiusX="25"
+                                                   RadiusY="25" />
+                                    <Rectangle Width="50"
+                                                   Height="50"
+                                                   Fill="#009CE9"
+                                                   RadiusX="25"
+                                                   RadiusY="25" />
+                                    <Rectangle Width="50"
+                                                   Height="50"
+                                                   Fill="#FF9C00"
+                                                   RadiusX="25"
+                                                   RadiusY="25" />
+                                    <Rectangle Width="50"
+                                                   Height="50"
+                                                   Fill="#60BF49"
+                                                   RadiusX="25"
+                                                   RadiusY="25" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Popup>
+                    <local:YuiIcon Name="Btn_Min"
+                                   Width="34"
+                                   Height="34"
+                                   shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                   Background="{DynamicResource YuiWindow.Background}"
+                                   BorderBrush="Transparent"
+                                   BorderThickness="0"
+                                   Click="Btn_Min_Click"
+                                   MouseOverBackground="{StaticResource YuiWindow.MouseOverBackground}"
+                                   PathColor="White"
+                                   PathData="{StaticResource MinButtonGeometry}"
+                                   PathWidth="11" />
+                    <local:YuiIcon Name="Btn_Max"
+                                   Width="34"
+                                   Height="34"
+                                   shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                   Background="{DynamicResource YuiWindow.Background}"
+                                   BorderBrush="Transparent"
+                                   BorderThickness="0"
+                                   Click="Btn_Max_Click"
+                                   MouseOverBackground="{StaticResource YuiWindow.MouseOverBackground}"
+                                   PathColor="White"
+                                   PathData="{StaticResource MaxButtonGeometry}"
+                                   PathWidth="13" />
+                    <local:YuiIcon Name="Btn_Restore"
+                                   Width="34"
+                                   Height="34"
+                                   shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                   Background="{DynamicResource YuiWindow.Background}"
+                                   BorderBrush="Transparent"
+                                   BorderThickness="0"
+                                   Click="Btn_Restore_Click"
+                                   MouseOverBackground="{StaticResource YuiWindow.MouseOverBackground}"
+                                   PathColor="White"
+                                   PathData="{StaticResource RestoreButtonGeometry}"
+                                   PathWidth="13"
+                                   Visibility="{Binding Visibility, ElementName=Btn_Max, Converter={StaticResource converterReversalVisibility}}" />
+                    <local:YuiIcon Name="Btn_Close"
+                                   Width="34"
+                                   Height="34"
+                                   shell:WindowChrome.IsHitTestVisibleInChrome="True"
+                                   Background="{DynamicResource YuiWindow.Background}"
+                                   BorderBrush="Transparent"
+                                   BorderThickness="0"
+                                   Click="Btn_Close_Click"
+                                   MouseOverBackground="{StaticResource YuiWindow.MouseOverBackground}"
+                                   PathColor="White"
+                                   PathData="{StaticResource CloseButtonGeometry}"
+                                   PathWidth="11" />
+                </StackPanel>
+            </Grid>
+            <!--  窗体主体  -->
+            <Grid Grid.Row="1"
+                           Grid.ColumnSpan="2"
+                           Background="{DynamicResource YuiWindow.ContentBackground}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="1" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ToggleButton Width="50"
+                               Height="30"
+                               HorizontalAlignment="Left"
+                               Background="{DynamicResource YuiWindow.ContentBackground}"
+                               Content="展开/缩小"
+                               IsChecked="{Binding IsChecked}"
+                               Style="{StaticResource ToggleButtonStyle}" />
+                <Border Grid.RowSpan="2"
+                               Grid.Column="1"
+                               BorderBrush="#DDDDE1"
+                               BorderThickness="1" />
+                <ContentControl Name="content"
+                               Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Grid.Column="2"
+                               Content="{Binding Content}" />
+                <ListBox Name="lstMenu"
+                               Grid.Row="1"
+                               Background="Transparent"
+                               BorderBrush="Transparent"
+                               DisplayMemberPath="DisplayName"
+                               ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
+                               ItemsSource="{Binding MenuList}"
+                               SelectedIndex="0"
+                               SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                               Style="{DynamicResource ListBoxStyle}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

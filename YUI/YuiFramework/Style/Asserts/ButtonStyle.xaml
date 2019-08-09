@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:local="clr-namespace:YuiFramework.CustomerControl">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Color.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type local:WcButton}">
+        <Setter Property="Background" Value="#FF44C300" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:WcButton}">
+                    <Border Name="PART_Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{TemplateBinding CornerRadius}">
+                        <!--<Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="7"
+                                Direction="0"
+                                Opacity="60"
+                                ShadowDepth="2"
+                                Color="{TemplateBinding ShadowColor}" />
+                        </Border.Effect>-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Path Name="PART_PATH"
+                                           Width="{TemplateBinding PathWidth}"
+                                           Margin="5,0"
+                                           Data="{TemplateBinding PathData}"
+                                           Fill="{TemplateBinding Foreground}"
+                                           Stretch="Uniform" />
+                            <TextBlock Name="PART_TB"
+                                           Grid.Column="1"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Background="Transparent"
+                                           Foreground="{TemplateBinding Foreground}"
+                                           Text="{Binding Content, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WcButton}}}"
+                                           TextTrimming="CharacterEllipsis"
+                                           TextWrapping="NoWrap" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Bd" Property="Background" Value="{Binding MouseOverBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WcButton}}}" />
+                            <Setter TargetName="PART_PATH" Property="Fill" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WcButton}}}" />
+                            <Setter TargetName="PART_TB" Property="Foreground" Value="{Binding MouseOverForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WcButton}}}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Bd" Property="Background" Value="{Binding PressedBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WcButton}}}" />
+                            <Setter TargetName="PART_PATH" Property="Fill" Value="{Binding PressedForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WcButton}}}" />
+                            <Setter TargetName="PART_TB" Property="Foreground" Value="{Binding PressedForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:WcButton}}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

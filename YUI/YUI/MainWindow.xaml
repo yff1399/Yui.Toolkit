@@ -1,0 +1,35 @@
+﻿<Window x:Class="YUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YUI"
+        xmlns:customerControl="clr-namespace:YuiFramework.CustomerControl;assembly=YuiFramework"
+        mc:Ignorable="d"  Width="200" Height="200" WindowStartupLocation="CenterScreen"
+        Title="YUI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <customerControl:YuiIconButton  x:Name="IconButton" Width="120" Height="40" BorderBrush="Transparent" TextElement.FontSize="18"
+                       BorderThickness="1" Content="图标按钮" LeftIcon="{StaticResource LeftIconStyle}" Foreground="White"
+                       RightIcon="{StaticResource RightIconStyle}" CornerRadius="0" IconWidth="18" IconColor="DodgerBlue"/>
+        <!--<Popup AllowsTransparency="True" IsOpen="{Binding IsMouseOver, ElementName=IconButton, Mode=OneWay}" Placement="Bottom" PlacementTarget="{Binding ElementName=IconButton}" StaysOpen="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Margin="0" Background="Transparent" BorderThickness="0">
+                    <Path Width="10" VerticalAlignment="Center" Data="{StaticResource TopCenterTriangle}" Fill="Black" Opacity="0.5"
+                                   Stretch="Uniform" />
+                </Border>
+                <Border Grid.Row="1" Width="{Binding ActualWidth, ElementName=IconButton}" MinHeight="100" Background="Black" BorderThickness="0"
+                               CornerRadius="3" Opacity="0.5">
+                    <TextBlock Text="Hello WPF Customer Control" TextWrapping="Wrap" />
+                </Border>
+            </Grid>
+        </Popup>-->
+    </Grid>
+</Window>
