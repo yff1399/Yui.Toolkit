@@ -63,6 +63,7 @@
     <Compile Include="CustomerControl\WcButton.cs" />
     <Compile Include="CustomerControl\YuiIcon.cs" />
     <Compile Include="CustomerControl\YuiIconButton.cs" />
+    <Compile Include="CustomerControl\YuiKeyWordTextBox.cs" />
     <Compile Include="CustomerControl\YuiTabItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YuiWindows\Microsoft.Windows.Shell\Standard\ComGuids.cs" />

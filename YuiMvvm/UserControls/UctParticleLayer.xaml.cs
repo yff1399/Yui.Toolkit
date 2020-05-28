@@ -98,7 +98,7 @@ namespace YuiMvvm.UserControls
                 elip.Height = 2;
                 Canvas.SetLeft(elip, dot.x.Value - 0.5);
                 Canvas.SetTop(elip, dot.y.Value - 0.5);
-                elip.Fill = new SolidColorBrush(Colors.White);
+                elip.Fill = new SolidColorBrush(Colors.Black);
                 Cav.Children.Add(elip);
                 #endregion
 
@@ -124,7 +124,7 @@ namespace YuiMvvm.UserControls
                         double opacity = ratio + 0.2;
                         if (opacity > 1) { opacity = 1; }
                         byte ar = (byte)(opacity * 255);
-                        line.Stroke = new SolidColorBrush(Color.FromArgb(ar, 255, 255, 255));
+                        line.Stroke = new SolidColorBrush(Color.FromArgb(ar, 113, 113, 113));
                         line.StrokeThickness = ratio / 2;
                         line.X1 = dot.x.Value;
                         line.Y1 = dot.y.Value;

@@ -121,6 +121,7 @@ namespace YuiMvvm.ViewModel
             MenuList.Add(new Menu() { DisplayName = "ComboBoxControl", SortIndex = 5 });
             MenuList.Add(new Menu() { DisplayName = "SliderControl", SortIndex = 6 });
             MenuList.Add(new Menu() { DisplayName = "PictureCarouselControl", SortIndex = 7 });
+            MenuList.Add(new Menu() { DisplayName = "KeyWordTextBox", SortIndex = 8 });
             MenuList.Add(new Menu() { DisplayName = "OtherControl", SortIndex = 99 });
         }
 
@@ -149,6 +150,9 @@ namespace YuiMvvm.ViewModel
                                 break;
                             case "随机粒子连线":
                                 Content = new UctParticleLayer();
+                                break;
+                            case "KeyWordTextBox":
+                                Content = new UctYuiControl();
                                 break;
                         }
                     }

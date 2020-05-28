@@ -6,13 +6,15 @@
                xmlns:local="clr-namespace:YuiFramework.CustomerControl;assembly=YuiFramework"
                xmlns:shell="clr-namespace:Microsoft.Windows.Shell;assembly=YuiFramework"
                Title="YUI"
+               Width="800"
+               Height="500"
+               WindowStartupLocation="CenterScreen"
                DataContext="{Binding Main, Source={StaticResource Locator}}"
                ResizeMode="CanResizeWithGrip"
                WindowStyle="None">
     <shell:WindowChrome.WindowChrome>
         <shell:WindowChrome CaptionHeight="0"
                        CornerRadius="0"
-                       
                        GlassFrameThickness="0"
                        UseAeroCaptionButtons="False" />
     </shell:WindowChrome.WindowChrome>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:YuiMvvm.UserControls"
              mc:Ignorable="d"  Loaded="Window_Loaded"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Canvas Background="{DynamicResource YuiWindow.Background}"  ClipToBounds="True" x:Name="Cav" >
+    <Canvas Background="White"  ClipToBounds="True" x:Name="Cav" >
 
     </Canvas>
 </UserControl>

@@ -140,6 +140,11 @@
                     </Button.Style>
                 </Button>
             </local:YuiTabItem>
+            <local:YuiTabItem x:Name="tab6" Width="150" Height="40" Header="KeyWorkTextBox">
+                <local:YuiKeyWordTextBox VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Foreground="Transparent"
+                                      Grid.Row="0" AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap"
+                                      Margin="5" Text="for(int i = 0; i)测试"/>
+            </local:YuiTabItem>
         </TabControl>
     </Grid>
 </UserControl>
